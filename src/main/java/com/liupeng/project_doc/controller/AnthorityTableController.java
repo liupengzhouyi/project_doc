@@ -1,7 +1,7 @@
 package com.liupeng.project_doc.controller;
 
-import com.liupeng.project_doc.entity.UserTable;
-import com.liupeng.project_doc.service.UserTableService;
+import com.liupeng.project_doc.entity.AnthorityTable;
+import com.liupeng.project_doc.service.AnthorityTableService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,20 +15,20 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 用户表(UserTable)表控制层
+ * 权限表(AnthorityTable)表控制层
  *
  * @author liupeng
- * @since 2021-04-20 13:16:38
+ * @since 2021-04-20 19:23:04
  */
-@Api(tags = {"用户管理"})
+@Api(tags = {"权限管理"})
 @RestController
-@RequestMapping("userTable")
-public class UserTableController {
+@RequestMapping("anthorityTable")
+public class AnthorityTableController {
     /**
      * 服务对象
      */
     @Resource
-    private UserTableService userTableService;
+    private AnthorityTableService anthorityTableService;
 
     /**
      * 通过主键查询单条数据
@@ -36,10 +36,10 @@ public class UserTableController {
      * @param id 主键
      * @return 单条数据
      */
-    @ApiOperation("查询一个用户")
+    @ApiOperation("查询一个权限")
     @RequestMapping(path = "selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public UserTable selectOne(@RequestBody Integer id) {
-        return this.userTableService.queryById(id);
+    public AnthorityTable selectOne(@RequestBody Integer id) {
+        return this.anthorityTableService.queryById(id);
     }
 
     /**
@@ -47,10 +47,10 @@ public class UserTableController {
      *
      * @return List
      */
-    @ApiOperation("查询所有用户")
+    @ApiOperation("查询所有权限")
     @RequestMapping(path = "selectAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public List<UserTable> selectAll() {
-        return this.userTableService.queryAll();
+    public List<AnthorityTable> selectAll() {
+        return this.anthorityTableService.queryAll();
     }
 
     /**
@@ -58,10 +58,10 @@ public class UserTableController {
      *
      * @return List
      */
-    @ApiOperation("添加一个用户")
+    @ApiOperation("添加一个权限")
     @RequestMapping(path = "addOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public UserTable addOne(@RequestBody UserTable userTable) {
-        return this.userTableService.insert(userTable);
+    public AnthorityTable addOne(@RequestBody AnthorityTable anthorityTable) {
+        return this.anthorityTableService.insert(anthorityTable);
     }
 
     /**
@@ -69,21 +69,21 @@ public class UserTableController {
      *
      * @return boolean
      */
-    @ApiOperation("删除一个用户")
+    @ApiOperation("删除一个权限")
     @RequestMapping(path = "delOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public boolean delOne(@RequestBody UserTable userTable) {
-        return this.userTableService.deleteById(userTable.getId());
+    public boolean delOne(@RequestBody AnthorityTable anthorityTable) {
+        return this.anthorityTableService.deleteById(anthorityTable.getId());
     }
 
     /**
      * 删除一条数据
      *
-     * @return UserTable
+     * @return AnthorityTable
      */
-    @ApiOperation("更新用户数据")
+    @ApiOperation("更新权限数据")
     @RequestMapping(path = "updateOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public UserTable update(@RequestBody UserTable userTable) {
-        return this.userTableService.update(userTable);
+    public AnthorityTable update(@RequestBody AnthorityTable anthorityTable) {
+        return this.anthorityTableService.update(anthorityTable);
     }
 
 

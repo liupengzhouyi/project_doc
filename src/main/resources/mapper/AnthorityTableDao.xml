@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liupeng.project_doc.dao.AnthorityTableDao">
+
+    <resultMap type="com.liupeng.project_doc.entity.AnthorityTable" id="AnthorityTableMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="anthority" column="anthority" jdbcType="INTEGER"/>
+        <result property="projectId" column="project_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AnthorityTableMap">
+        select id,
+               anthority,
+               project_id
+        from program_doc.anthority_table
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="AnthorityTableMap">
+        select id,
+               anthority,
+               project_id
+        from program_doc.anthority_table limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="AnthorityTableMap">
+        select id,
+               anthority,
+               project_id
+        from program_doc.anthority_table
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.anthority_table(anthority, project_id)
+        values (#{anthority}, #{projectId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.anthority_table(anthority, project_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.anthority}, #{entity.projectId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.anthority_table(anthority, project_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.anthority}, #{entity.projectId})
+        </foreach>
+        on duplicate key update
+        anthority = values(anthority) , project_id = values(project_id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update program_doc.anthority_table
+        <set>
+            <if test="anthority != null">
+                anthority = #{anthority},
+            </if>
+            <if test="projectId != null">
+                project_id = #{projectId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from program_doc.anthority_table
+        where id = #{id}
+    </delete>
+
+</mapper>
+

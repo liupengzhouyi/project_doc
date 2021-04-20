@@ -10,7 +10,6 @@ server:
 
 # 设置数据源
 spring:
-
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/program_doc?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
@@ -48,8 +47,7 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   # 全局的映射，不用在xml文件写实体类的全路径
-  type-aliases-package: cn.liupeng.porject_doc.pojo
+  type-aliases-package: com.liupeng.project_doc.dao
   configuration:
     # 开启驼峰映射
     map-underscore-to-camel-case: true
-
