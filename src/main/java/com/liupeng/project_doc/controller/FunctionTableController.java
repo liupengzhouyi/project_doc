@@ -18,9 +18,9 @@ import java.util.List;
  * 函数表(FunctionTable)表控制层
  *
  * @author liupeng
- * @since 2021-04-20 20:21:11
+ * @since 2021-04-20 20:37:37
  */
-@Api(tags = {"函数管理"})
+@Api(tags = {"管理"})
 @RestController
 @RequestMapping("functionTable")
 public class FunctionTableController {
@@ -36,7 +36,7 @@ public class FunctionTableController {
      * @param id 主键
      * @return 单条数据
      */
-    @ApiOperation("查询一个函数")
+    @ApiOperation("查询一个")
     @RequestMapping(path = "selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public FunctionTable selectOne(@RequestBody Integer id) {
         return this.functionTableService.queryById(id);
@@ -47,7 +47,7 @@ public class FunctionTableController {
      *
      * @return List
      */
-    @ApiOperation("查询所有函数")
+    @ApiOperation("查询所有")
     @RequestMapping(path = "selectAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public List<FunctionTable> selectAll() {
         return this.functionTableService.queryAll();
@@ -58,7 +58,7 @@ public class FunctionTableController {
      *
      * @return List
      */
-    @ApiOperation("添加一个函数")
+    @ApiOperation("添加一个")
     @RequestMapping(path = "addOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public FunctionTable addOne(@RequestBody FunctionTable functionTable) {
         return this.functionTableService.insert(functionTable);
@@ -69,7 +69,7 @@ public class FunctionTableController {
      *
      * @return boolean
      */
-    @ApiOperation("删除一个函数")
+    @ApiOperation("删除一个")
     @RequestMapping(path = "delOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public boolean delOne(@RequestBody FunctionTable functionTable) {
         return this.functionTableService.deleteById(functionTable.getId());
@@ -80,7 +80,7 @@ public class FunctionTableController {
      *
      * @return FunctionTable
      */
-    @ApiOperation("更新函数数据")
+    @ApiOperation("更新数据")
     @RequestMapping(path = "updateOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public FunctionTable update(@RequestBody FunctionTable functionTable) {
         return this.functionTableService.update(functionTable);

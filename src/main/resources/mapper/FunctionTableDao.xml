@@ -7,6 +7,7 @@
         <result property="projectId" column="project_id" jdbcType="INTEGER"/>
         <result property="functionId" column="function_id" jdbcType="INTEGER"/>
         <result property="functionname" column="functionName" jdbcType="VARCHAR"/>
+        <result property="path" column="path" jdbcType="VARCHAR"/>
         <result property="version" column="version" jdbcType="VARCHAR"/>
         <result property="nowAuditorsId" column="now_auditors_id" jdbcType="INTEGER"/>
         <result property="nowMaintenanceStaffId" column="now_maintenance_staff_id" jdbcType="INTEGER"/>
@@ -22,6 +23,7 @@
                project_id,
                function_id,
                functionName,
+               path,
                version,
                now_auditors_id,
                now_maintenance_staff_id,
@@ -39,6 +41,7 @@
                project_id,
                function_id,
                functionName,
+               path,
                version,
                now_auditors_id,
                now_maintenance_staff_id,
@@ -55,6 +58,7 @@
                project_id,
                function_id,
                functionName,
+               path,
                version,
                now_auditors_id,
                now_maintenance_staff_id,
@@ -67,38 +71,38 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into program_doc.function_table(project_id, function_id, functionName, version, now_auditors_id,
+        insert into program_doc.function_table(project_id, function_id, functionName, path, version, now_auditors_id,
                                                now_maintenance_staff_id, start_date, end_date, function_doc_id,
                                                is_delete)
-        values (#{projectId}, #{functionId}, #{functionname}, #{version}, #{nowAuditorsId}, #{nowMaintenanceStaffId},
-                #{startDate}, #{endDate}, #{functionDocId}, #{isDelete})
+        values (#{projectId}, #{functionId}, #{functionname}, #{path}, #{version}, #{nowAuditorsId},
+                #{nowMaintenanceStaffId}, #{startDate}, #{endDate}, #{functionDocId}, #{isDelete})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into program_doc.function_table(project_id, function_id, functionName, version, now_auditors_id,
+        insert into program_doc.function_table(project_id, function_id, functionName, path, version, now_auditors_id,
         now_maintenance_staff_id, start_date, end_date, function_doc_id, is_delete)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.projectId}, #{entity.functionId}, #{entity.functionname}, #{entity.version},
+            (#{entity.projectId}, #{entity.functionId}, #{entity.functionname}, #{entity.path}, #{entity.version},
             #{entity.nowAuditorsId}, #{entity.nowMaintenanceStaffId}, #{entity.startDate}, #{entity.endDate},
             #{entity.functionDocId}, #{entity.isDelete})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into program_doc.function_table(project_id, function_id, functionName, version, now_auditors_id,
+        insert into program_doc.function_table(project_id, function_id, functionName, path, version, now_auditors_id,
         now_maintenance_staff_id, start_date, end_date, function_doc_id, is_delete)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.projectId}, #{entity.functionId}, #{entity.functionname}, #{entity.version},
+            (#{entity.projectId}, #{entity.functionId}, #{entity.functionname}, #{entity.path}, #{entity.version},
             #{entity.nowAuditorsId}, #{entity.nowMaintenanceStaffId}, #{entity.startDate}, #{entity.endDate},
             #{entity.functionDocId}, #{entity.isDelete})
         </foreach>
         on duplicate key update
-        project_id = values(project_id) , function_id = values(function_id) , functionName = values(functionName) ,
-        version = values(version) , now_auditors_id = values(now_auditors_id) , now_maintenance_staff_id =
-        values(now_maintenance_staff_id) , start_date = values(start_date) , end_date = values(end_date) ,
-        function_doc_id = values(function_doc_id) , is_delete = values(is_delete)
+        project_id = values(project_id) , function_id = values(function_id) , functionName = values(functionName) , path
+        = values(path) , version = values(version) , now_auditors_id = values(now_auditors_id) ,
+        now_maintenance_staff_id = values(now_maintenance_staff_id) , start_date = values(start_date) , end_date =
+        values(end_date) , function_doc_id = values(function_doc_id) , is_delete = values(is_delete)
     </insert>
 
     <!--通过主键修改数据-->
@@ -113,6 +117,9 @@
             </if>
             <if test="functionname != null and functionname != ''">
                 functionName = #{functionname},
+            </if>
+            <if test="path != null and path != ''">
+                path = #{path},
             </if>
             <if test="version != null and version != ''">
                 version = #{version},

@@ -9,11 +9,11 @@ import io.swagger.annotations.ApiModelProperty;
  * 函数表(FunctionTable)实体类
  *
  * @author liupeng
- * @since 2021-04-20 20:21:11
+ * @since 2021-04-20 20:37:32
  */
 @ApiModel(value = "FunctionTable")
 public class FunctionTable implements Serializable {
-    private static final long serialVersionUID = -10729274782103764L;
+    private static final long serialVersionUID = -98974920187608346L;
     /**
      * 自增ID
      */
@@ -34,6 +34,11 @@ public class FunctionTable implements Serializable {
      */
     @ApiModelProperty(value = "函数名称", notes = "函数名称")
     private String functionname;
+    /**
+     * 函数路径
+     */
+    @ApiModelProperty(value = "函数路径", notes = "函数路径")
+    private String path;
     /**
      * 版本
      */
@@ -101,6 +106,14 @@ public class FunctionTable implements Serializable {
 
     public void setFunctionname(String functionname) {
         this.functionname = functionname;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getVersion() {

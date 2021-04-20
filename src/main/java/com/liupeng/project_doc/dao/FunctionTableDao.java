@@ -10,7 +10,7 @@ import java.util.List;
  * 函数表(FunctionTable)表数据库访问层
  *
  * @author liupeng
- * @since 2021-04-20 20:21:11
+ * @since 2021-04-20 20:37:34
  */
 @Mapper
 public interface FunctionTableDao {
