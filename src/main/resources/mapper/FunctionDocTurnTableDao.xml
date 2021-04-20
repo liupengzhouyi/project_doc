@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liupeng.project_doc.dao.FunctionDocTurnTableDao">
+
+    <resultMap type="com.liupeng.project_doc.entity.FunctionDocTurnTable" id="FunctionDocTurnTableMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="linkPathId" column="link_path_id" jdbcType="INTEGER"/>
+        <result property="docInformationId" column="doc_information_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="FunctionDocTurnTableMap">
+        select id,
+               link_path_id,
+               doc_information_id
+        from program_doc.function_doc_turn_table
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="FunctionDocTurnTableMap">
+        select id,
+               link_path_id,
+               doc_information_id
+        from program_doc.function_doc_turn_table limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="FunctionDocTurnTableMap">
+        select id,
+               link_path_id,
+               doc_information_id
+        from program_doc.function_doc_turn_table
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_doc_turn_table(link_path_id, doc_information_id)
+        values (#{linkPathId}, #{docInformationId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_doc_turn_table(link_path_id, doc_information_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.linkPathId}, #{entity.docInformationId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_doc_turn_table(link_path_id, doc_information_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.linkPathId}, #{entity.docInformationId})
+        </foreach>
+        on duplicate key update
+        link_path_id = values(link_path_id) , doc_information_id = values(doc_information_id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update program_doc.function_doc_turn_table
+        <set>
+            <if test="linkPathId != null">
+                link_path_id = #{linkPathId},
+            </if>
+            <if test="docInformationId != null">
+                doc_information_id = #{docInformationId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from program_doc.function_doc_turn_table
+        where id = #{id}
+    </delete>
+
+</mapper>
+
