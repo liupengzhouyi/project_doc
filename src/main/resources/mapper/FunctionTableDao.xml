@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liupeng.project_doc.dao.FunctionTableDao">
+
+    <resultMap type="com.liupeng.project_doc.entity.FunctionTable" id="FunctionTableMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="projectId" column="project_id" jdbcType="INTEGER"/>
+        <result property="functionId" column="function_id" jdbcType="INTEGER"/>
+        <result property="functionname" column="functionName" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="VARCHAR"/>
+        <result property="nowAuditorsId" column="now_auditors_id" jdbcType="INTEGER"/>
+        <result property="nowMaintenanceStaffId" column="now_maintenance_staff_id" jdbcType="INTEGER"/>
+        <result property="startDate" column="start_date" jdbcType="VARCHAR"/>
+        <result property="endDate" column="end_date" jdbcType="VARCHAR"/>
+        <result property="functionDocId" column="function_doc_id" jdbcType="INTEGER"/>
+        <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="FunctionTableMap">
+        select id,
+               project_id,
+               function_id,
+               functionName,
+               version,
+               now_auditors_id,
+               now_maintenance_staff_id,
+               start_date,
+               end_date,
+               function_doc_id,
+               is_delete
+        from program_doc.function_table
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="FunctionTableMap">
+        select id,
+               project_id,
+               function_id,
+               functionName,
+               version,
+               now_auditors_id,
+               now_maintenance_staff_id,
+               start_date,
+               end_date,
+               function_doc_id,
+               is_delete
+        from program_doc.function_table limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="FunctionTableMap">
+        select id,
+               project_id,
+               function_id,
+               functionName,
+               version,
+               now_auditors_id,
+               now_maintenance_staff_id,
+               start_date,
+               end_date,
+               function_doc_id,
+               is_delete
+        from program_doc.function_table
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_table(project_id, function_id, functionName, version, now_auditors_id,
+                                               now_maintenance_staff_id, start_date, end_date, function_doc_id,
+                                               is_delete)
+        values (#{projectId}, #{functionId}, #{functionname}, #{version}, #{nowAuditorsId}, #{nowMaintenanceStaffId},
+                #{startDate}, #{endDate}, #{functionDocId}, #{isDelete})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_table(project_id, function_id, functionName, version, now_auditors_id,
+        now_maintenance_staff_id, start_date, end_date, function_doc_id, is_delete)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.projectId}, #{entity.functionId}, #{entity.functionname}, #{entity.version},
+            #{entity.nowAuditorsId}, #{entity.nowMaintenanceStaffId}, #{entity.startDate}, #{entity.endDate},
+            #{entity.functionDocId}, #{entity.isDelete})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_table(project_id, function_id, functionName, version, now_auditors_id,
+        now_maintenance_staff_id, start_date, end_date, function_doc_id, is_delete)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.projectId}, #{entity.functionId}, #{entity.functionname}, #{entity.version},
+            #{entity.nowAuditorsId}, #{entity.nowMaintenanceStaffId}, #{entity.startDate}, #{entity.endDate},
+            #{entity.functionDocId}, #{entity.isDelete})
+        </foreach>
+        on duplicate key update
+        project_id = values(project_id) , function_id = values(function_id) , functionName = values(functionName) ,
+        version = values(version) , now_auditors_id = values(now_auditors_id) , now_maintenance_staff_id =
+        values(now_maintenance_staff_id) , start_date = values(start_date) , end_date = values(end_date) ,
+        function_doc_id = values(function_doc_id) , is_delete = values(is_delete)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update program_doc.function_table
+        <set>
+            <if test="projectId != null">
+                project_id = #{projectId},
+            </if>
+            <if test="functionId != null">
+                function_id = #{functionId},
+            </if>
+            <if test="functionname != null and functionname != ''">
+                functionName = #{functionname},
+            </if>
+            <if test="version != null and version != ''">
+                version = #{version},
+            </if>
+            <if test="nowAuditorsId != null">
+                now_auditors_id = #{nowAuditorsId},
+            </if>
+            <if test="nowMaintenanceStaffId != null">
+                now_maintenance_staff_id = #{nowMaintenanceStaffId},
+            </if>
+            <if test="startDate != null and startDate != ''">
+                start_date = #{startDate},
+            </if>
+            <if test="endDate != null and endDate != ''">
+                end_date = #{endDate},
+            </if>
+            <if test="functionDocId != null">
+                function_doc_id = #{functionDocId},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from program_doc.function_table
+        where id = #{id}
+    </delete>
+
+</mapper>
+
