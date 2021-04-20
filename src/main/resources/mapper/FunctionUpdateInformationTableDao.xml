@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liupeng.project_doc.dao.FunctionUpdateInformationTableDao">
+
+    <resultMap type="com.liupeng.project_doc.entity.FunctionUpdateInformationTable"
+               id="FunctionUpdateInformationTableMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="functionId" column="function_id" jdbcType="INTEGER"/>
+        <result property="version" column="version" jdbcType="VARCHAR"/>
+        <result property="createId" column="create_id" jdbcType="INTEGER"/>
+        <result property="otherFunctionId" column="other_function_id" jdbcType="INTEGER"/>
+        <result property="isKnow" column="is_know" jdbcType="INTEGER"/>
+        <result property="getInformation" column="get_information" jdbcType="INTEGER"/>
+        <result property="doOver" column="do_over" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="FunctionUpdateInformationTableMap">
+        select id,
+               function_id,
+               version,
+               create_id,
+               other_function_id,
+               is_know,
+               get_information,
+               do_over
+        from program_doc.function_update_information_table
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="FunctionUpdateInformationTableMap">
+        select id,
+               function_id,
+               version,
+               create_id,
+               other_function_id,
+               is_know,
+               get_information,
+               do_over
+        from program_doc.function_update_information_table limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="FunctionUpdateInformationTableMap">
+        select id,
+               function_id,
+               version,
+               create_id,
+               other_function_id,
+               is_know,
+               get_information,
+               do_over
+        from program_doc.function_update_information_table
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_update_information_table(function_id, version, create_id, other_function_id,
+                                                                  is_know, get_information, do_over)
+        values (#{functionId}, #{version}, #{createId}, #{otherFunctionId}, #{isKnow}, #{getInformation}, #{doOver})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_update_information_table(function_id, version, create_id, other_function_id,
+        is_know, get_information, do_over)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.functionId}, #{entity.version}, #{entity.createId}, #{entity.otherFunctionId}, #{entity.isKnow},
+            #{entity.getInformation}, #{entity.doOver})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_update_information_table(function_id, version, create_id, other_function_id,
+        is_know, get_information, do_over)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.functionId}, #{entity.version}, #{entity.createId}, #{entity.otherFunctionId}, #{entity.isKnow},
+            #{entity.getInformation}, #{entity.doOver})
+        </foreach>
+        on duplicate key update
+        function_id = values(function_id) , version = values(version) , create_id = values(create_id) ,
+        other_function_id = values(other_function_id) , is_know = values(is_know) , get_information =
+        values(get_information) , do_over = values(do_over)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update program_doc.function_update_information_table
+        <set>
+            <if test="functionId != null">
+                function_id = #{functionId},
+            </if>
+            <if test="version != null and version != ''">
+                version = #{version},
+            </if>
+            <if test="createId != null">
+                create_id = #{createId},
+            </if>
+            <if test="otherFunctionId != null">
+                other_function_id = #{otherFunctionId},
+            </if>
+            <if test="isKnow != null">
+                is_know = #{isKnow},
+            </if>
+            <if test="getInformation != null">
+                get_information = #{getInformation},
+            </if>
+            <if test="doOver != null">
+                do_over = #{doOver},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from program_doc.function_update_information_table
+        where id = #{id}
+    </delete>
+
+</mapper>
+
