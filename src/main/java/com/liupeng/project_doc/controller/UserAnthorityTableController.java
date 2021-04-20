@@ -31,10 +31,13 @@ public class UserAnthorityTableController {
     private UserAnthorityTableService userAnthorityTableService;
 
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/UserAnthorityTableController.java
+     * @description: 查询一个用户权限
+     * @params: [id]
+     * @return com.liupeng.project_doc.entity.UserAnthorityTable
+     * @date: 20/04/2021 21:35
+     * @author: liupeng
      */
     @ApiOperation("查询一个用户权限")
     @RequestMapping(path = "selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -43,9 +46,13 @@ public class UserAnthorityTableController {
     }
 
     /**
-     * 查询所有数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/UserAnthorityTableController.java
+     * @description: 查询所有用户权限
+     * @params: []
+     * @return java.util.List<com.liupeng.project_doc.entity.UserAnthorityTable>
+     * @date: 20/04/2021 21:35
+     * @author: liupeng
      */
     @ApiOperation("查询所有用户权限")
     @RequestMapping(path = "selectAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -54,9 +61,13 @@ public class UserAnthorityTableController {
     }
 
     /**
-     * 添加一条数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/UserAnthorityTableController.java
+     * @description: 添加一个用户权限
+     * @params: [userAnthorityTable]
+     * @return com.liupeng.project_doc.entity.UserAnthorityTable
+     * @date: 20/04/2021 21:35
+     * @author: liupeng
      */
     @ApiOperation("添加一个用户权限")
     @RequestMapping(path = "addOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -65,9 +76,13 @@ public class UserAnthorityTableController {
     }
 
     /**
-     * 删除一条数据
-     *
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/UserAnthorityTableController.java
+     * @description: 删除一个用户权限
+     * @params: [userAnthorityTable]
      * @return boolean
+     * @date: 20/04/2021 21:35
+     * @author: liupeng
      */
     @ApiOperation("删除一个用户权限")
     @RequestMapping(path = "delOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -76,9 +91,13 @@ public class UserAnthorityTableController {
     }
 
     /**
-     * 删除一条数据
-     *
-     * @return UserAnthorityTable
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/UserAnthorityTableController.java
+     * @description: 更新用户权限数据
+     * @params: [userAnthorityTable]
+     * @return com.liupeng.project_doc.entity.UserAnthorityTable
+     * @date: 20/04/2021 21:35
+     * @author: liupeng
      */
     @ApiOperation("更新用户权限数据")
     @RequestMapping(path = "updateOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

@@ -31,10 +31,13 @@ public class ProjectTableController {
     private ProjectTableService projectTableService;
 
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/ProjectTableController.java
+     * @description: 查询一个项目
+     * @params: [id]
+     * @return com.liupeng.project_doc.entity.ProjectTable
+     * @date: 20/04/2021 21:32
+     * @author: liupeng
      */
     @ApiOperation("查询一个项目")
     @RequestMapping(path = "selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -43,9 +46,13 @@ public class ProjectTableController {
     }
 
     /**
-     * 查询所有数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/ProjectTableController.java
+     * @description: 查询所有项目
+     * @params: []
+     * @return java.util.List<com.liupeng.project_doc.entity.ProjectTable>
+     * @date: 20/04/2021 21:32
+     * @author: liupeng
      */
     @ApiOperation("查询所有项目")
     @RequestMapping(path = "selectAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -54,9 +61,13 @@ public class ProjectTableController {
     }
 
     /**
-     * 添加一条数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/ProjectTableController.java
+     * @description: 添加一个项目
+     * @params: [projectTable]
+     * @return com.liupeng.project_doc.entity.ProjectTable
+     * @date: 20/04/2021 21:33
+     * @author: liupeng
      */
     @ApiOperation("添加一个项目")
     @RequestMapping(path = "addOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -65,9 +76,13 @@ public class ProjectTableController {
     }
 
     /**
-     * 删除一条数据
-     *
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/ProjectTableController.java
+     * @description: 删除一个项目
+     * @params: [projectTable]
      * @return boolean
+     * @date: 20/04/2021 21:33
+     * @author: liupeng
      */
     @ApiOperation("删除一个项目")
     @RequestMapping(path = "delOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -76,9 +91,13 @@ public class ProjectTableController {
     }
 
     /**
-     * 删除一条数据
-     *
-     * @return ProjectTable
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/ProjectTableController.java
+     * @description: 更新项目数据
+     * @params: [projectTable]
+     * @return com.liupeng.project_doc.entity.ProjectTable
+     * @date: 20/04/2021 21:33
+     * @author: liupeng
      */
     @ApiOperation("更新项目数据")
     @RequestMapping(path = "updateOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

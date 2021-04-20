@@ -31,10 +31,13 @@ public class FunctionDocTurnTableController {
     private FunctionDocTurnTableService functionDocTurnTableService;
 
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTurnTableController.java
+     * @description: 查询一个函数文档索引
+     * @params: [id]
+     * @return com.liupeng.project_doc.entity.FunctionDocTurnTable
+     * @date: 20/04/2021 21:23
+     * @author: liupeng
      */
     @ApiOperation("查询一个函数文档索引")
     @RequestMapping(path = "selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -43,9 +46,13 @@ public class FunctionDocTurnTableController {
     }
 
     /**
-     * 查询所有数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTurnTableController.java
+     * @description: 查询所有函数文档索引
+     * @params: []
+     * @return java.util.List<com.liupeng.project_doc.entity.FunctionDocTurnTable>
+     * @date: 20/04/2021 21:23
+     * @author: liupeng
      */
     @ApiOperation("查询所有函数文档索引")
     @RequestMapping(path = "selectAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -54,9 +61,13 @@ public class FunctionDocTurnTableController {
     }
 
     /**
-     * 添加一条数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTurnTableController.java
+     * @description: 添加一个函数文档索引
+     * @params: [functionDocTurnTable]
+     * @return com.liupeng.project_doc.entity.FunctionDocTurnTable
+     * @date: 20/04/2021 21:23
+     * @author: liupeng
      */
     @ApiOperation("添加一个函数文档索引")
     @RequestMapping(path = "addOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -65,9 +76,13 @@ public class FunctionDocTurnTableController {
     }
 
     /**
-     * 删除一条数据
-     *
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTurnTableController.java
+     * @description: 删除一个函数文档索引
+     * @params: [functionDocTurnTable]
      * @return boolean
+     * @date: 20/04/2021 21:23
+     * @author: liupeng
      */
     @ApiOperation("删除一个函数文档索引")
     @RequestMapping(path = "delOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -76,9 +91,13 @@ public class FunctionDocTurnTableController {
     }
 
     /**
-     * 删除一条数据
-     *
-     * @return FunctionDocTurnTable
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTurnTableController.java
+     * @description: 更新函数文档索引数据
+     * @params: [functionDocTurnTable]
+     * @return com.liupeng.project_doc.entity.FunctionDocTurnTable
+     * @date: 20/04/2021 21:23
+     * @author: liupeng
      */
     @ApiOperation("更新函数文档索引数据")
     @RequestMapping(path = "updateOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

@@ -31,10 +31,13 @@ public class FunctionDocTableController {
     private FunctionDocTableService functionDocTableService;
 
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTableController.java
+     * @description: 查询一个函数文档
+     * @params: [id]
+     * @return com.liupeng.project_doc.entity.FunctionDocTable
+     * @date: 20/04/2021 21:22
+     * @author: liupeng
      */
     @ApiOperation("查询一个函数文档")
     @RequestMapping(path = "selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -43,9 +46,13 @@ public class FunctionDocTableController {
     }
 
     /**
-     * 查询所有数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTableController.java
+     * @description: 查询所有函数文档
+     * @params: []
+     * @return java.util.List<com.liupeng.project_doc.entity.FunctionDocTable>
+     * @date: 20/04/2021 21:22
+     * @author: liupeng
      */
     @ApiOperation("查询所有函数文档")
     @RequestMapping(path = "selectAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -54,9 +61,13 @@ public class FunctionDocTableController {
     }
 
     /**
-     * 添加一条数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTableController.java
+     * @description: 添加一个函数文档
+     * @params: [functionDocTable]
+     * @return com.liupeng.project_doc.entity.FunctionDocTable
+     * @date: 20/04/2021 21:22
+     * @author: liupeng
      */
     @ApiOperation("添加一个函数文档")
     @RequestMapping(path = "addOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -65,9 +76,13 @@ public class FunctionDocTableController {
     }
 
     /**
-     * 删除一条数据
-     *
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTableController.java
+     * @description: 删除一个函数文档
+     * @params: [functionDocTable]
      * @return boolean
+     * @date: 20/04/2021 21:22
+     * @author: liupeng
      */
     @ApiOperation("删除一个函数文档")
     @RequestMapping(path = "delOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -76,9 +91,13 @@ public class FunctionDocTableController {
     }
 
     /**
-     * 删除一条数据
-     *
-     * @return FunctionDocTable
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionDocTableController.java
+     * @description: 更新函数文档数据
+     * @params: [functionDocTable]
+     * @return com.liupeng.project_doc.entity.FunctionDocTable
+     * @date: 20/04/2021 21:22
+     * @author: liupeng
      */
     @ApiOperation("更新函数文档数据")
     @RequestMapping(path = "updateOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

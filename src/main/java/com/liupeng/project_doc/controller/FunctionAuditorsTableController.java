@@ -31,10 +31,13 @@ public class FunctionAuditorsTableController {
     private FunctionAuditorsTableService functionAuditorsTableService;
 
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionAuditorsTableController.java
+     * @description: 通过主键查询单条数据
+     * @params: [id]
+     * @return com.liupeng.project_doc.entity.FunctionAuditorsTable
+     * @date: 20/04/2021 21:16
+     * @author: liupeng
      */
     @ApiOperation("查询一个函数审核")
     @RequestMapping(path = "selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -43,9 +46,13 @@ public class FunctionAuditorsTableController {
     }
 
     /**
-     * 查询所有数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionAuditorsTableController.java
+     * @description: 查询所有数据
+     * @params: []
+     * @return java.util.List<com.liupeng.project_doc.entity.FunctionAuditorsTable>
+     * @date: 20/04/2021 21:16
+     * @author: liupeng
      */
     @ApiOperation("查询所有函数审核")
     @RequestMapping(path = "selectAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -54,9 +61,13 @@ public class FunctionAuditorsTableController {
     }
 
     /**
-     * 添加一条数据
-     *
-     * @return List
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionAuditorsTableController.java
+     * @description: 添加一条数据
+     * @params: [functionAuditorsTable]
+     * @return com.liupeng.project_doc.entity.FunctionAuditorsTable
+     * @date: 20/04/2021 21:17
+     * @author: liupeng
      */
     @ApiOperation("添加一个函数审核")
     @RequestMapping(path = "addOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -65,9 +76,13 @@ public class FunctionAuditorsTableController {
     }
 
     /**
-     * 删除一条数据
-     *
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionAuditorsTableController.java
+     * @description: 删除一条数据
+     * @params: [functionAuditorsTable]
      * @return boolean
+     * @date: 20/04/2021 21:17
+     * @author: liupeng
      */
     @ApiOperation("删除一个函数审核")
     @RequestMapping(path = "delOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -76,9 +91,13 @@ public class FunctionAuditorsTableController {
     }
 
     /**
-     * 删除一条数据
-     *
-     * @return FunctionAuditorsTable
+     * functionID: TODO
+     * @path: com/liupeng/project_doc/controller/FunctionAuditorsTableController.java
+     * @description: 删除一条数据
+     * @params: [functionAuditorsTable]
+     * @return com.liupeng.project_doc.entity.FunctionAuditorsTable
+     * @date: 20/04/2021 21:17
+     * @author: liupeng
      */
     @ApiOperation("更新函数审核数据")
     @RequestMapping(path = "updateOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
