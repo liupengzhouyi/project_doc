@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liupeng.project_doc.dao.FunctionUsedDao">
+
+    <resultMap type="com.liupeng.project_doc.entity.FunctionUsed" id="FunctionUsedMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="functionId" column="function_id" jdbcType="INTEGER"/>
+        <result property="functionIdUsing" column="function_id_using" jdbcType="INTEGER"/>
+        <result property="startData" column="start_data" jdbcType="VARCHAR"/>
+        <result property="endData" column="end_data" jdbcType="VARCHAR"/>
+        <result property="isUsing" column="is_using" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="FunctionUsedMap">
+        select id,
+               function_id,
+               function_id_using,
+               start_data,
+               end_data,
+               is_using
+        from program_doc.function_used
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="FunctionUsedMap">
+        select id,
+               function_id,
+               function_id_using,
+               start_data,
+               end_data,
+               is_using
+        from program_doc.function_used limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="FunctionUsedMap">
+        select id,
+               function_id,
+               function_id_using,
+               start_data,
+               end_data,
+               is_using
+        from program_doc.function_used
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_used(function_id, function_id_using, start_data, end_data, is_using)
+        values (#{functionId}, #{functionIdUsing}, #{startData}, #{endData}, #{isUsing})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_used(function_id, function_id_using, start_data, end_data, is_using)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.functionId}, #{entity.functionIdUsing}, #{entity.startData}, #{entity.endData}, #{entity.isUsing})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into program_doc.function_used(function_id, function_id_using, start_data, end_data, is_using)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.functionId}, #{entity.functionIdUsing}, #{entity.startData}, #{entity.endData}, #{entity.isUsing})
+        </foreach>
+        on duplicate key update
+        function_id = values(function_id) , function_id_using = values(function_id_using) , start_data =
+        values(start_data) , end_data = values(end_data) , is_using = values(is_using)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update program_doc.function_used
+        <set>
+            <if test="functionId != null">
+                function_id = #{functionId},
+            </if>
+            <if test="functionIdUsing != null">
+                function_id_using = #{functionIdUsing},
+            </if>
+            <if test="startData != null and startData != ''">
+                start_data = #{startData},
+            </if>
+            <if test="endData != null and endData != ''">
+                end_data = #{endData},
+            </if>
+            <if test="isUsing != null">
+                is_using = #{isUsing},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from program_doc.function_used
+        where id = #{id}
+    </delete>
+
+</mapper>
+
